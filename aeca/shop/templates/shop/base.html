@@ -7,25 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div>
-      <ul>
-        <li>
-          <a href="{% url 'index' %}">index</a>
-          {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}">profile</a>
-            <a href="{% url 'logout' %}">logout</a>
-          {% else %}
-            <a href="{% url 'login' %}">login</a>
-            <a href="{% url 'register' %}">register</a>
-          {% endif %}
-        </li>
-      </ul>
+    <div class="flex border-b-2 mb-3 p-3 px-10 border-slate-300">
+      <div class="mx-3">
+        <p>AECA</p>
+      </div>
+      <a class="text-cyan-600 mx-3" href="{% url 'index' %}">index</a>
+      <div class="grow">
+        {% if user.is_authenticated %}
+          <a class="text-cyan-600 mx-3" href="{% url 'profile' %}">profile</a>
+        {% endif %}
+      </div>
+      <div class="">
+        {% if user.is_authenticated %}
+          <a class="text-cyan-600 mx-3" href="{% url 'logout' %}">logout</a>
+        {% else %}
+          <a class="text-cyan-600 mx-3" href="{% url 'login' %}">login</a>
+          <a class="text-cyan-600 mx-3" href="{% url 'register' %}">register</a>
+        {% endif %}
+      </div>
     </div>
-    {% if messages %}
+
+    <div class="px-10">
+      {% if messages %}
       {% for message in messages %}
-        <div>{{ message }}</div>
+      <div>{{ message }}</div>
       {% endfor %}
-    {% endif %}
-    {% block content %}{% endblock %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
