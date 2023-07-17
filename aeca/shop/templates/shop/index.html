@@ -3,6 +3,11 @@
 {% block content %}
   <h1>index page</h1>
   {% for product in products %}
-    <p>{{ product }}</p>
+    <div class="border my-5">
+      <h1>{{ product.name }}</h1>
+      <p>${{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <p>{{ product.category }}</p>
+    </div>
   {% endfor %}
 {% endblock %}
