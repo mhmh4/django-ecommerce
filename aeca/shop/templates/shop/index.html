@@ -1,8 +1,8 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-  <!-- <h1>index page</h1> -->
-  <div class="flex">
+  <h1>Index page</h1>
+  <div class="flex mb-10">
     <div class="grow me-20">
       {% for product in products %}
         <div class="border-2 border-slate-200 hover:border-sky-200 mb-3 rounded py-2 px-4">
@@ -14,8 +14,13 @@
         </div>
       {% endfor %}
     </div>
-    <div class="border-2">
-      <p>&lt;cart items&gt;</p>
+    <div class="border-2 border-sky-600 rounded">
+      <div class="border-b">
+        <h1 class="px-20">My Cart</h1>
+      </div>
+      <div>
+
+      </div>
     </div>
 
   </div>
