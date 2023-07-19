@@ -16,14 +16,15 @@
         {% if user.is_authenticated %}
         <a class="text-cyan-600 mx-3" href="{% url 'profile' %}">My Profile</a>
         <span class="mx-3"><!-- --></span>
-          <form class="inline-flex" method="get">
-            <p>&lt;search bar&gt;</p>
-          </form>
+        <form class="inline-flex mx-10" method="get">
+          <p>&lt;search bar&gt;</p>
+        </form>
+        <a class="text-cyan-600 mx-3" href="{% url 'profile' %}">My Cart</a>
         {% endif %}
       </div>
       <div class="">
         {% if user.is_authenticated %}
-          <a class="text-cyan-600 mx-3" href="{% url 'logout' %}">Logout</a>
+          <a class="text-cyan-600 mx-3 border-l-2 ps-4" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="text-cyan-600 mx-3" href="{% url 'login' %}">Login</a>
           <a class="text-cyan-600 mx-3" href="{% url 'register' %}">Register</a>
