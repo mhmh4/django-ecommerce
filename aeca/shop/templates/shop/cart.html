@@ -3,7 +3,9 @@
 {% block content %}
   <div class="border">
     {% for item in cart %}
-      <div>{{item}}</div>
+      <div>
+        <a href="{% url 'product' item.product.id %}">{{item}}</a>
+      </div>
     {% endfor %}
     <form class="my-2" action="{% url 'checkout' %}" method="post">
       {% csrf_token %}
