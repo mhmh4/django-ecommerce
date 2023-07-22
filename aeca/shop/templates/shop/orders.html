@@ -3,5 +3,8 @@
 {% block content %}
   <div>
     My Orders
+    {% for order in orders %}
+      <div>{{ order }}</div>
+    {% endfor %}
   </div>
 {% endblock %}
