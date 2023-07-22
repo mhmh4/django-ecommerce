@@ -9,13 +9,19 @@
           <p>${{ product.price }}</p>
           <p class="text-slate-400">{{ product.description }}</p>
           <p>{{ product.category }}</p>
-          <button class="border-2 border-slate-500 px-1 bg-slate-200 hover:border-slate-800 hover:bg-slate-300 rounded">Add to cart</button>
+          <form method="post" action="{% url 'add' %}">
+            {% csrf_token %}
+            <button name="product_id" value="{{ product.id }}" class="border-2 border-slate-500 px-1 bg-slate-200 hover:border-slate-800 hover:bg-slate-300 rounded">Add to cart</button>
+          </form>
         </div>
       {% endfor %}
     </div>
     <div class="border-2 border-sky-600 rounded">
       <div class="border-b">
         <h1 class="px-20">My Cart</h1>
+        {% for item in cart %}
+          <div>{{item}}</div>
+        {% endfor %}
       </div>
       <div>
 

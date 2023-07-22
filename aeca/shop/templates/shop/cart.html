@@ -1,7 +1,9 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-  <div>
-    My Cart
+  <div class="border">
+    {% for item in cart %}
+      <div>{{item}}</div>
+    {% endfor %}
   </div>
 {% endblock %}
