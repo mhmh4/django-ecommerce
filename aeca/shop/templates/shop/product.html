@@ -1,0 +1,15 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+  <div>
+    {% if request.META.HTTP_REFERER %}
+      <a href="{{request.META.HTTP_REFERER|escape}}">Back</a>
+    {% endif %}
+  </div>
+  <div>
+    product
+    <div>
+      {{ product }}
+    </div>
+  </div>
+{% endblock %}
