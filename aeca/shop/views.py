@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.cache import cache_page
 
 from .models import CartItem, Order, OrderItem, Product
 
-
+@cache_page(60 * 5)
 def index(request):
     context = {
         "products": Product.objects.all(),
