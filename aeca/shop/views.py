@@ -11,6 +11,14 @@ def index(request):
     return render(request, "shop/index.html", context)
 
 
+def product(request, id):
+    product = Product.objects.filter(id=id).get()
+    context = {
+        "product": product
+    }
+    return render(request, "shop/product.html", context)
+
+
 def add_product_to_cart(request):
     product_id = request.POST.get("product_id")
     product = Product.objects.filter(id=product_id).get()
