@@ -3,7 +3,7 @@ from django.views.decorators.cache import cache_page
 
 from .models import CartItem, Order, OrderItem, Product
 
-@cache_page(60 * 5)
+
 def index(request):
     context = {
         "products": Product.objects.all(),
@@ -12,6 +12,7 @@ def index(request):
     return render(request, "shop/index.html", context)
 
 
+@cache_page(60)
 def product(request, id):
     product = Product.objects.filter(id=id).get()
     context = {
