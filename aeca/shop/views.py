@@ -33,6 +33,8 @@ def cart(request):
     context = {
         "cart": CartItem.objects.filter(user=request.user.id)
     }
+    cart_total = sum(item.product.price for item in context["cart"])
+    context["cart_total"] = cart_total
     return render(request, "shop/cart.html", context)
 
 

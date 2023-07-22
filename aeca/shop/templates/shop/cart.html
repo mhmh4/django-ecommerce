@@ -3,10 +3,12 @@
 {% block content %}
   <div class="border">
     {% for item in cart %}
-      <div>
+      <div class="border my-3 py-2 rounded-md">
+        <span>{{ forloop.counter }}.</span>
         <a href="{% url 'product' item.product.id %}">{{item}}</a>
       </div>
     {% endfor %}
+    <p>cart total: {{ cart_total }}</p>
     <form class="my-2" action="{% url 'checkout' %}" method="post">
       {% csrf_token %}
       <input class="px-2 cursor-pointer py-1 bg-blue-400 rounded text-white" type="submit" value="Checkout">
