@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .models import CartItem, Product
+from .models import CartItem, Order, OrderItem, Product
 
 
 def index(request):
@@ -12,8 +12,10 @@ def index(request):
 
 
 def add_product_to_cart(request):
-    product_id = request.POST["product_id"]
+    product_id = request.POST.get("product_id")
     product = Product.objects.filter(id=product_id).get()
+    if CartItem.objects.filter(user=request.user, product=product).exists():
+        return redirect("index")
     item = CartItem(user=request.user, product=product)
     item.save()
     return redirect("index")
@@ -26,5 +28,20 @@ def cart(request):
     return render(request, "shop/cart.html", context)
 
 
+def checkout(request):
+    order = Order(user=request.user)
+    order.save()
+    # order.id should be usuable
+    cart = CartItem.objects.filter(user=request.user)
+    for item in cart:
+        oi = OrderItem(order=order, product=item.product)
+        oi.save()
+        item.delete()
+    return render(request, "shop/cart.html", {})
+
+
 def orders(request):
-    return render(request, "shop/orders.html", {})
+    context = {
+        "orders": Order.objects.filter(user=request.user)
+    }
+    return render(request, "shop/orders.html", context)
