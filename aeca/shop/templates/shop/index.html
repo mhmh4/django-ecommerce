@@ -1,36 +1,37 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-  <div class="d-flex">
-    <div class="flex-grow-1 me-20 row row-cols-3">
+<div class="d-flex">
+  <div class="flex-grow-1">
+    <section class="row row-cols-3">
       {% for product in products %}
-      <a href="{% url 'product' product.id %}">
-        <div>
-          <h1>
-              {{ product.name }}
-            </h1>
-            <p>${{ product.price }}</p>
-            <p>{{ product.description }}</p>
-            <p>{{ product.category }}</p>
-            <form method="post" action="{% url 'add' %}">
-              {% csrf_token %}
-              <button name="product_id" value="{{ product.id }}">Add to cart</button>
-            </form>
-          </div>
+    <article class="border">
+      <h1>
+        <a href="{% url 'product' product.id %}">
+          {{ product.name }}
         </a>
+      </h1>
+        <p>${{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <p>{{ product.category }}</p>
+      <form method="post" action="{% url 'add' %}">
+        {% csrf_token %}
+        <button name="product_id" value="{{ product.id }}">Add to cart</button>
+      </form>
+    </article>
+      {% endfor %}
+    </section>
+  </div>
+  <div class="">
+    <div>
+      <h1>My Cart</h1>
+      {% for item in cart %}
+        <div>{{item}}</div>
       {% endfor %}
     </div>
     <div>
-      <div>
-        <h1>My Cart</h1>
-        {% for item in cart %}
-          <div>{{item}}</div>
-        {% endfor %}
-      </div>
-      <div>
 
-      </div>
     </div>
-
   </div>
+</div>
 {% endblock %}
