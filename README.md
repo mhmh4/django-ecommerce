@@ -1,11 +1,19 @@
 # AECA
 
-## Setup
+## Quickstart
 
-1. `python manage.py makemigrations`
+```
+python manage.py makemigrations
+```
 
-2. `python manage.py migrate`
+```
+python manage.py migrate
+```
 
-3. `sudo service redis-server restart`
+```
+sudo service redis-server restart
+```
 
-4. `python manage.py runserver`
+```
+python manage.py runserver
+```
