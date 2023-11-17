@@ -1,4 +1,4 @@
-# AECA
+# django-ecommerce
 
 ## Quickstart
 
