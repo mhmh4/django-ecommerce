@@ -1,11 +1,11 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-<div class="d-flex">
-  <div class="flex-grow-1">
-    <section class="row row-cols-3">
+<div>
+  <div>
+    <section>
       {% for product in products %}
-    <article class="border">
+    <article>
       <h1>
         <a href="{% url 'product' product.id %}">
           {{ product.name }}
@@ -22,7 +22,7 @@
       {% endfor %}
     </section>
   </div>
-  <div class="">
+  <div>
     <div>
       <h1>My Cart</h1>
       {% for item in cart %}
