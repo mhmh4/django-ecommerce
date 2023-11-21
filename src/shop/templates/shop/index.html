@@ -1,28 +1,28 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-<div>
-  <div>
-    <section>
+<div class="flex">
+  <div class="w-3/4">
+    <section class="grid grid-cols-3">
       {% for product in products %}
-    <article>
-      <h1>
-        <a href="{% url 'product' product.id %}">
-          {{ product.name }}
-        </a>
-      </h1>
-        <p>${{ product.price }}</p>
-        <p>{{ product.description }}</p>
-        <p>{{ product.category }}</p>
-      <form method="post" action="{% url 'add' %}">
-        {% csrf_token %}
-        <button name="product_id" value="{{ product.id }}">Add to cart</button>
-      </form>
-    </article>
+        <article class="border m-2 border-slate-400 rounded px-3 py-2">
+          <h1>
+            <a href="{% url 'product' product.id %}">
+              {{ product.name }}
+            </a>
+          </h1>
+            <p>${{ product.price }}</p>
+            <p>{{ product.description }}</p>
+            <p>{{ product.category }}</p>
+          <form method="post" action="{% url 'add' %}">
+            {% csrf_token %}
+            <button name="product_id" value="{{ product.id }}">Add to cart</button>
+          </form>
+        </article>
       {% endfor %}
     </section>
   </div>
-  <div>
+  <div class="w-1/4 border-s border-slate-500">
     <div>
       <h1>My Cart</h1>
       {% for item in cart %}
