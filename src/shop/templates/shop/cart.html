@@ -5,7 +5,7 @@
     {% for item in cart %}
       <div>
         <span>{{ forloop.counter }}.</span>
-        <a href="{% url 'product' item.product.id %}">{{item}}</a>
+        <a class="text-blue-500" href="{% url 'product' item.product.id %}">{{item}}</a>
       </div>
     {% endfor %}
     <p>cart total: {{ cart_total }}</p>

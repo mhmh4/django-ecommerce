@@ -3,7 +3,7 @@
 {% block content %}
   <div>
     {% if request.META.HTTP_REFERER %}
-      <a href="{{request.META.HTTP_REFERER|escape}}">Back</a>
+      <a class="text-blue-500" href="{{request.META.HTTP_REFERER|escape}}">Back</a>
     {% endif %}
   </div>
   <div>
